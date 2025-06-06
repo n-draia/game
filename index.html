@@ -5,9 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 2px;
+            margin: 30px auto;
+            width: 304px;
+            background: #222;
+            border-radius: 8px;
+        }
+        .tile {
+            width: 100px;
+            height: 100px;
+            background-size: 300px 300px;
+            background-repeat: no-repeat;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 0;
+            transition: box-shadow 0.2s;
+        }
+        .tile:focus {
+            box-shadow: 0 0 0 2px #0078d7;
+        }
+        .empty {
+            background: #f0f0f0;
+            cursor: default;
+        }
+        .win-message {
+            color: #2e7d32;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .difficulty-buttons {
+            margin: 30px auto 10px auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .difficulty-buttons button {
+            padding: 10px 24px;
+            font-size: 1em;
+            border-radius: 6px;
+            border: none;
+            background: #0078d7;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .difficulty-buttons button:hover {
+            background: #005fa3;
+        }
+        .timer {
+            font-size: 1.3em;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .lose-message {
+            color: #d32f2f;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Game!</h1>
+    <h1>Sliding Puzzle</h1>
+    <div class="difficulty-buttons" id="difficulty">
+        <button data-diff="easy">Easy</button>
+        <button data-diff="medium">Medium</button>
+        <button data-diff="hard">Hard</button>
+    </div>
+    <div class="timer" id="timer" style="display:none;"></div>
+    <div class="puzzle-container" id="puzzle" style="display:none;"></div>
+    <div id="win" class="win-message" style="display:none;">You solved it! 🎉</div>
+    <div id="lose" class="lose-message" style="display:none;">Time's up! You lost. 😢</div>
     <script src="script.js"></script>
 </body>
 </html>
