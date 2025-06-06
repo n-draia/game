@@ -15,6 +15,7 @@
             width: 304px;
             background: #222;
             border-radius: 8px;
+            position: relative;
         }
         .tile {
             width: 100px;
@@ -69,6 +70,56 @@
             font-size: 1.2em;
             margin-top: 10px;
         }
+        .water-indicator {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: rgba(0, 123, 255, 0.7);
+            border-radius: 5px;
+        }
+        .spout {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid #0078d7;
+        }
+        .water-drop {
+            position: absolute;
+            top: 40px;
+            right: 15px;
+            width: 5px;
+            height: 5px;
+            background: #0078d7;
+            border-radius: 50%;
+            animation: drop 0.5s infinite;
+        }
+        .faucet {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 10px;
+            background: #555;
+            border-radius: 5px 5px 0 0;
+        }
+        .faucet-knob {
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: #0078d7;
+            border-radius: 50%;
+        }
+        @keyframes drop {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(5px); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -79,7 +130,20 @@
         <button data-diff="hard">Hard</button>
     </div>
     <div class="timer" id="timer" style="display:none;"></div>
-    <div class="puzzle-container" id="puzzle" style="display:none;"></div>
+    <div class="puzzle-container" id="puzzle" style="display:none;">
+        <!-- Water indicators -->
+        <div class="water-indicator" style="top:60px; right:-54px;"></div>
+        <div class="water-indicator" style="top:100px; right:-54px;"></div>
+        <div class="water-indicator" style="top:140px; right:-54px;"></div>
+        <div class="water-indicator" style="top:180px; right:-54px;"></div>
+        <div class="water-indicator" style="top:220px; right:-54px;"></div>
+        <!-- Spout and drop -->
+        <div class="spout"></div>
+        <div class="water-drop"></div>
+        <!-- Faucet -->
+        <div class="faucet"></div>
+        <div class="faucet-knob"></div>
+    </div>
     <div id="win" class="win-message" style="display:none;">You solved it! 🎉</div>
     <div id="lose" class="lose-message" style="display:none;">Time's up! You lost. 😢</div>
     <script src="script.js"></script>

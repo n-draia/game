@@ -8,3 +8,18 @@ body {
 h1 {
     color: #333;
 }
+.puzzle-container {
+    position: relative;
+    display: grid;
+    grid-gap: 12px;
+}
+.tile {
+    transition: box-shadow 0.2s, background 0.2s, transform 0.25s cubic-bezier(.4,1.6,.6,1), filter 0.2s;
+    z-index: 1;
+    position: relative;
+    border-radius: 14px;
+    border: 2px solid #bbb;
+}
+.tile.animating {
+    z-index: 2;
+}
