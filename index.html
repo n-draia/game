@@ -1,151 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Smart Routine & Product Advisor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        .puzzle-container {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 2px;
-            margin: 30px auto;
-            width: 304px;
-            background: #222;
-            border-radius: 8px;
-            position: relative;
-        }
-        .tile {
-            width: 100px;
-            height: 100px;
-            background-size: 300px 300px;
-            background-repeat: no-repeat;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            font-size: 0;
-            transition: box-shadow 0.2s;
-        }
-        .tile:focus {
-            box-shadow: 0 0 0 2px #0078d7;
-        }
-        .empty {
-            background: #f0f0f0;
-            cursor: default;
-        }
-        .win-message {
-            color: #2e7d32;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        .difficulty-buttons {
-            margin: 30px auto 10px auto;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .difficulty-buttons button {
-            padding: 10px 24px;
-            font-size: 1em;
-            border-radius: 6px;
-            border: none;
-            background: #0078d7;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .difficulty-buttons button:hover {
-            background: #005fa3;
-        }
-        .timer {
-            font-size: 1.3em;
-            color: #d32f2f;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .lose-message {
-            color: #d32f2f;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        .water-indicator {
-            position: absolute;
-            width: 10px;
-            height: 40px;
-            background: rgba(0, 123, 255, 0.7);
-            border-radius: 5px;
-        }
-        .spout {
-            position: absolute;
-            top: 20px;
-            right: 10px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid #0078d7;
-        }
-        .water-drop {
-            position: absolute;
-            top: 40px;
-            right: 15px;
-            width: 5px;
-            height: 5px;
-            background: #0078d7;
-            border-radius: 50%;
-            animation: drop 0.5s infinite;
-        }
-        .faucet {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40px;
-            height: 10px;
-            background: #555;
-            border-radius: 5px 5px 0 0;
-        }
-        .faucet-knob {
-            position: absolute;
-            top: -5px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            background: #0078d7;
-            border-radius: 50%;
-        }
-        @keyframes drop {
-            0% { transform: translateY(0); opacity: 1; }
-            50% { transform: translateY(5px); opacity: 0.7; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-    </style>
 </head>
 <body>
-    <h1>Sliding Puzzle</h1>
-    <div class="difficulty-buttons" id="difficulty">
-        <button data-diff="easy">Easy</button>
-        <button data-diff="medium">Medium</button>
-        <button data-diff="hard">Hard</button>
-    </div>
-    <div class="timer" id="timer" style="display:none;"></div>
-    <div class="puzzle-container" id="puzzle" style="display:none;">
-        <!-- Water indicators -->
-        <div class="water-indicator" style="top:60px; right:-54px;"></div>
-        <div class="water-indicator" style="top:100px; right:-54px;"></div>
-        <div class="water-indicator" style="top:140px; right:-54px;"></div>
-        <div class="water-indicator" style="top:180px; right:-54px;"></div>
-        <div class="water-indicator" style="top:220px; right:-54px;"></div>
-        <!-- Spout and drop -->
-        <div class="spout"></div>
-        <div class="water-drop"></div>
-        <!-- Faucet -->
-        <div class="faucet"></div>
-        <div class="faucet-knob"></div>
-    </div>
-    <div id="win" class="win-message" style="display:none;">You solved it! 🎉</div>
-    <div id="lose" class="lose-message" style="display:none;">Time's up! You lost. 😢</div>
+    <header class="bg-white shadow-sm py-3 mb-4">
+        <div class="container header-flex position-relative">
+            <img src="images/logo.png" alt="L'Oreal Logo" height="50">
+            <h1 class="mb-0 brand-heading">Smart Routine & Product Advisor</h1>
+            <div style="position: absolute; top: 0.5rem; right: 1rem;">
+                <button id="toggle-rtl" class="btn btn-outline-dark btn-sm">RTL</button>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card chatbot-card">
+                    <div class="card-body">
+                        <div id="chat-window" class="mb-3"></div>
+                        <form id="chat-form" class="d-flex">
+                            <input type="text" id="user-input" class="form-control me-2" placeholder="Type your message..." required>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>

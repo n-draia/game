@@ -1,25 +1,121 @@
+/* L'Oreal Brand Colors */
+:root {
+  --loreal-gold: #c7b299;
+  --loreal-black: #231f20;
+  --loreal-white: #fff;
+  --loreal-gray: #f5f5f5;
+  --loreal-blue: #005baa;
+  --loreal-red: #ff003b;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: var(--loreal-gray);
+  color: var(--loreal-black);
 }
-h1 {
-    color: #333;
+
+.brand-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--loreal-black);
+  letter-spacing: 1px;
 }
-.puzzle-container {
-    position: relative;
-    display: grid;
-    grid-gap: 12px;
+
+
+header {
+    background: var(--loreal-red);
+    border-bottom: 3px solid var(--loreal-gold);
 }
-.tile {
-    transition: box-shadow 0.2s, background 0.2s, transform 0.25s cubic-bezier(.4,1.6,.6,1), filter 0.2s;
-    z-index: 1;
-    position: relative;
-    border-radius: 14px;
-    border: 2px solid #bbb;
+
+.header-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.tile.animating {
-    z-index: 2;
+
+.header-flex img {
+  display: block;
+  margin: 0 auto 0.5rem auto;
 }
+
+.brand-heading {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.card.chatbot-card {
+  border: 1px solid var(--loreal-gold);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(199, 178, 153, 0.08);
+  background: var(--loreal-white);
+}
+
+#chat-window {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--loreal-gray);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.user-msg, .bot-msg {
+  margin-bottom: 12px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  max-width: 80%;
+  word-break: break-word;
+  font-size: 1rem;
+}
+
+.user-msg {
+  background: var(--loreal-blue);
+  color: var(--loreal-white);
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.bot-msg {
+  background: var(--loreal-gold);
+  color: var(--loreal-black);
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+#toggle-rtl {
+  font-family: 'Open Sans', Arial, sans-serif;
+  border-color: var(--loreal-gold);
+  color: var(--loreal-black);
+}
+#toggle-rtl.active {
+  background: var(--loreal-gold);
+  color: var(--loreal-black);
+}
+
+/* RTL Support */
+body[dir="rtl"] {
+  direction: rtl;
+}
+body[dir="rtl"] .user-msg {
+  margin-right: auto;
+  margin-left: 0;
+  text-align: right;
+}
+body[dir="rtl"] .bot-msg {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+@media (max-width: 576px) {
+  .brand-heading {
+    font-size: 1.2rem;
+  }
+  #chat-window {
+    min-height: 200px;
+    padding: 8px;
+  }
+}
+
