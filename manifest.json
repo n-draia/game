@@ -1,0 +1,21 @@
+{
+  "name": "Beauty Advisor",
+  "short_name": "BeautyAdvisor",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#e3a535",
+  "theme_color": "#e3a535",
+  "description": "Smart Routine & Product Advisor for L'Oréal.",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
